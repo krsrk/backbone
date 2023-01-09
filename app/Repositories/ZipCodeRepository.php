@@ -33,7 +33,7 @@ class ZipCodeRepository implements Repository
         $fedEnt = [
             'key' => (int)$data['c_estado'],
             'name' => $data['d_estado'],
-            'code' => $data['c_CP'],
+            'code' => (! empty($data['c_CP'])) ? $data['c_CP'] : null,
         ];
 
         $municipality = [
