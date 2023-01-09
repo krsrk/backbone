@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function (Request $request) {
-    return response()->json(['Welcome to the Mrb Order Service!'], 200);
+    return response()->json(['Welcome to the Zip Codes Service!'], 200);
 });
 
 Route::get('/api', function (Request $request) {
-    return response()->json(['Welcome to the Mrb Order Service!'], 200);
+    return response()->json(['Welcome to the Zip Codes Service!'], 200);
 });
