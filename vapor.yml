@@ -2,13 +2,14 @@ id: 40787
 name: backbone-zipcodes
 environments:
     production:
-        memory: 1024
-        cli-memory: 512
+        memory: 2024
+        cli-memory: 1024
         runtime: 'php-8.1:al2'
         database: zip-codes
         octane: true
         octane-database-session-persist: true
         scheduler: false
+        warm: 1
         build:
             - 'COMPOSER_MIRROR_PATH_REPOS=1 composer install --no-dev'
         deploy:
