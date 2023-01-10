@@ -19,4 +19,4 @@ docker-compose.yml
 
 .vapor/
 .env.production
-.env.staging
+.env.staging.env.staging
