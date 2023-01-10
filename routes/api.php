@@ -23,5 +23,5 @@ Route::get('/api', function (Request $request) {
 });
 
 Route::group(['prefix' => 'api/zip-codes'], function($router) {
-    Route::get('/{zip_code}', [\App\Http\Controllers\ZipCodeController::class, 'index'])->name('zip-codes');
+    Route::get('/{zipCode}', [\App\Http\Controllers\ZipCodeController::class, 'index'])->name('zip-codes');
 });

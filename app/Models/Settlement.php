@@ -9,4 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Settlement extends Model
 {
     use HasFactory, HasUuids;
+
+    public $table = 'settlements';
 }

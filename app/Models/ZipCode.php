@@ -10,6 +10,7 @@ class ZipCode extends Model
 {
     use HasFactory, HasUuids;
 
+    public $table = 'zip_codes';
     protected $fillable = [
         'zip_code',
         'locality',
@@ -17,4 +18,11 @@ class ZipCode extends Model
         'municipality',
         'created_at',
     ];
+
+    //protected $with = ['settlements'];
+
+    public function settlements()
+    {
+        return $this->hasMany(Settlement::class, 'zip_code_id');
+    }
 }

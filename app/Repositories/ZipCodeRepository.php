@@ -6,6 +6,8 @@ use App\Models\ZipCode;
 
 class ZipCodeRepository implements Repository
 {
+    const WITH_RELATIONS = ['settlements'];
+
     protected $model;
 
     public function __construct()
@@ -23,9 +25,9 @@ class ZipCodeRepository implements Repository
         // TODO: Implement findById() method.
     }
 
-    public function findBy(string $field, mixed $value)
+    public function findBy(string $field, mixed $value) : ZipCode
     {
-        // TODO: Implement findBy() method.
+        return $this->model::with(self::WITH_RELATIONS)->where($field, '=', $value)->first();
     }
 
     public function store($data) : ZipCode
@@ -44,7 +46,7 @@ class ZipCodeRepository implements Repository
         return $this->model::updateOrCreate(
             ['zip_code' => $data['d_codigo']],
             [
-                'locality' => (isset($dat['d_ciudad'])) ? $dat['d_ciudad'] : '',
+                'locality' => (array_key_exists('d_ciudad', $data)) ? $data['d_ciudad'] : '',
                 'federal_entity' => json_encode($fedEnt),
                 'municipality' => json_encode($municipality),
                 'created_at' => date('Y-m-d H:i:s'),
