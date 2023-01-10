@@ -13,7 +13,9 @@ class ZipCodeController extends Controller
     public function index(ZipCodeRequest $request, string $zipCode)
     {
         return response()->json(
-            new ZipCodeResource($this->repository->findBy('zip_code', $zipCode))
+            new ZipCodeResource(
+                $this->repository->toCache($this->repository->findBy('zip_code', $zipCode))
+            )
         );
     }
 }

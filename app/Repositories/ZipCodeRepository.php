@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\ZipCode;
+use Illuminate\Support\Facades\Cache;
 
 class ZipCodeRepository implements Repository
 {
@@ -28,6 +29,13 @@ class ZipCodeRepository implements Repository
     public function findBy(string $field, mixed $value) : ZipCode
     {
         return $this->model::with(self::WITH_RELATIONS)->where($field, '=', $value)->first();
+    }
+
+    public function toCache($data)
+    {
+        return Cache::remember('zip-codes', today()->endOfDay(), function () use($data) {
+            return $data;
+        });
     }
 
     public function store($data) : ZipCode
