@@ -21,3 +21,7 @@ Route::get('/', function (Request $request) {
 Route::get('/api', function (Request $request) {
     return response()->json(['Welcome to the Zip Codes Service!'], 200);
 });
+
+Route::group(['prefix' => 'api/zip-codes'], function($router) {
+    Route::get('/{zip_code}', [\App\Http\Controllers\ZipCodeController::class, 'index'])->name('zip-codes');
+});
