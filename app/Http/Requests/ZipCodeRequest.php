@@ -25,14 +25,14 @@ class ZipCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'zipCode' => 'required|string'
+            'zip_code' => 'required|string'
         ];
     }
 
     public function validationData(): array
     {
         return [
-            'zipCode' => Route::input('zipCode'),
+            'zip_code' => Route::input('zip_code'),
         ];
     }
 }
