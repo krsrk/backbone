@@ -26,7 +26,7 @@ class ZipCodeRepository implements Repository
         // TODO: Implement findById() method.
     }
 
-    public function findBy(string $field, mixed $value) : ZipCode
+    public function findBy(string $field, mixed $value)
     {
         return $this->model::with(self::WITH_RELATIONS)->where($field, '=', $value)->first();
     }
