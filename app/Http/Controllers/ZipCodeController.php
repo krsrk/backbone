@@ -11,9 +11,9 @@ class ZipCodeController extends Controller
 {
     public function __construct(protected ZipCodeRepository $repository){}
 
-    public function index(ZipCodeRequest $request, Response $response, string $zipCode)
+    public function index(ZipCodeRequest $request, Response $response, string $zip_code)
     {
-        $zipCodes = $this->repository->findBy('zip_code', $zipCode);
+        $zipCodes = $this->repository->findBy('zip_code', $zip_code);
         $responseData = (is_null($zipCodes)) ? [] : new ZipCodeResource($zipCodes);
         $responseCode = (is_null($zipCodes)) ?  $response::HTTP_NOT_FOUND : $response::HTTP_OK;
 
